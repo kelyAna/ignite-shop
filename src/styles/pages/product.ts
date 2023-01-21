@@ -6,13 +6,12 @@ export const ProductContainer = styled('main', {
   alignItems: 'stretch',
   gap: '4rem',
 
-  maxWidth: 1180,
+  width: '80%',
   margin: '0 auto',
 })
 
 export const ImageContainer = styled('div', {
   width: '100%',
-  maxWidth: 576,
   height: 'calc(656px - 0.5rem)',
   background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
   borderRadius: 8,
@@ -54,7 +53,7 @@ export const ProductDetails = styled('div', {
     marginTop: 'auto',
     background: '$green500',
     border: 0,
-    color: '$white',
+    color: 'white',
     borderRadius: 8,
     padding: '1.25rem',
     cursor: 'pointer',
