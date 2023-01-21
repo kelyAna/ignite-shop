@@ -2,8 +2,7 @@ import { styled } from "..";
 
 export const HomeContainer = styled('main', {
    display: 'flex',
-   width: '100%',
-   maxWidth: 'calc(100vw - ((100vw - 1180px) / 2))',
+   padding: '2rem 10rem 2rem 10rem',
    marginLeft: 'auto',
    minHeight: 656
 })
@@ -13,14 +12,13 @@ export const Product = styled('div', {
   borderRadius: 8,
   cursor: 'pointer',
   position: 'relative',
-  overflow: 'hidden',
 
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
 
   img: {
-    objectFit: 'cover'
+    objectFit: 'cover',
   },
 
   footer: {
@@ -30,9 +28,13 @@ export const Product = styled('div', {
     right: '0.25rem',
     padding: '2rem',
 
-    borderRadius: 6,
+    height: '80px',
 
     display: 'flex',
+    alignContent: 'space-between',
+
+    borderRadius: 6,
+
     alignItems: 'center',
     justifyContent: 'space-between',
 
@@ -47,11 +49,22 @@ export const Product = styled('div', {
       color: '$gray100',
     },
 
-    span: {
+    div: {
+      display: 'block',
+    },
+
+    p: {
+      marginTop: '3px',
       fontSize: '$xl',
       fontWeight: 'bold',
-      color: '$green300'
+      color: '$green300',
     },
+
+    button: {
+      background: 'transparent',
+      border: 0,
+      cursor: 'pointer'
+    }
   },
 
   '&:hover': {

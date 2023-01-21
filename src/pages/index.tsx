@@ -9,6 +9,7 @@ import { HomeContainer, Product } from "../styles/pages/home"
 import "keen-slider/keen-slider.min.css"
 import { stripe } from "../lib/stripe"
 
+import cartIcon from "../assets/cart-icon.svg"
 
 interface HomeProps {
   products: {
@@ -22,7 +23,7 @@ interface HomeProps {
 export default function Home({ products }: HomeProps) {
   const [sliderRef] = useKeenSlider({
     slides: {
-      perView: 3,
+      perView: 2,
       spacing: 48,
     },
   })
@@ -40,8 +41,13 @@ export default function Home({ products }: HomeProps) {
                 <Image src={product.imageUrl} alt="" width={520} height={480} />
 
                 <footer>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
+                  <div>
+                    <strong>{product.name}</strong>
+                    <p>{product.price}</p>
+                  </div>
+                  <button>
+                    <Image src={cartIcon} alt="" width={50} height={50} />
+                  </button>
                 </footer>
               </Product>
             </Link>
