@@ -76,11 +76,11 @@ export default function Cart() {
     <CartContent>
       <h3 style={{ marginTop: '5rem' }}>Sacola de compras</h3>
       {arrCart.map((item, index) => (
-        <CartItem key={`${item.product.id}-${index}`}>
-          <Image src={item.product.imageUrl} alt="" width={100} height={100} />
+        <CartItem key={`${item.product?.id}-${index}`}>
+          <Image src={item.product?.imageUrl} alt="" width={100} height={100} />
           <div>
-            <p>{item.product.name}</p>
-            <h4>{item.product.price}</h4>
+            <p>{item.product?.name}</p>
+            <h4>{item.product?.price}</h4>
             <button onClick={() => handleRemoveButtonClick(item.product.id)}>
               Remover
             </button>
