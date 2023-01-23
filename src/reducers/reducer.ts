@@ -34,8 +34,6 @@ const addProductToCart = (product: ProductProps, state: any) => {
     return (productId = Object.values(item)[0])
   })
 
-  console.log(updatedCart)
-
   const arrCart: any[] = []
 
   for (let j = 0; j < updatedCart.length; j++) {

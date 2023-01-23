@@ -2,8 +2,6 @@ import { useContext, useEffect, useState } from 'react'
 import sum from 'lodash.sum'
 import axios from 'axios'
 import { CartContext } from '../context/CartContext'
-import { Box, useToast } from '@chakra-ui/react'
-import toast from 'react-hot-toast'
 import Image from 'next/image'
 
 import { ToastComponent } from './components/Toast'
@@ -14,11 +12,11 @@ import {
   CartLine,
   CartPrice,
 } from '../styles/pages/cart'
+import toast from 'react-hot-toast'
 
 const notifyRemovedProduct = () => toast('Produto removido')
 
 export default function Cart() {
-  const toast = useToast()
   const [showToast, setShowToast] = useState(false)
 
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
@@ -65,21 +63,14 @@ export default function Cart() {
   const handleRemoveButtonClick = (itemId: string) => {
     removeItemFromCart(itemId)
 
-    setShowToast(!showToast)
-
-    notifyRemovedProduct()
+    if (showToast) {
+      notifyRemovedProduct()
+    }
   }
 
   useEffect(() => {
-    toast({
-      position: 'bottom-left',
-      render: () => (
-        <Box color="white" p={3} bg="blue.500">
-          Hello World
-        </Box>
-      ),
-    })
-  }, [showToast, setShowToast, toast])
+    setShowToast(true)
+  }, [showToast])
 
   return (
     <CartContent>

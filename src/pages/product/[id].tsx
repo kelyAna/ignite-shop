@@ -4,8 +4,8 @@ import Image from 'next/image'
 import { useContext } from 'react'
 import toast from 'react-hot-toast'
 import Stripe from 'stripe'
-
 import { CartContext } from '../../context/CartContext'
+
 import { stripe } from '../../lib/stripe'
 import {
   ImageContainer,
@@ -26,7 +26,7 @@ export type ProductProps = {
   }
 }
 
-const notifyProductAddedToCart = () => toast('Produto adicionado')
+const notifyAddedProduct = () => toast('Produto adicionado')
 
 export default function Product({ product }: ProductProps) {
   const { addItemToCart } = useContext(CartContext)
@@ -34,23 +34,23 @@ export default function Product({ product }: ProductProps) {
   const addItemToCartClick = () => {
     addItemToCart({ product })
 
-    notifyProductAddedToCart()
+    notifyAddedProduct()
   }
 
   return (
     <>
       <Head>
-        <title>{product.name} | Ignite Shop</title>
+        <title>{product?.name} | Ignite Shop</title>
       </Head>
 
       <ProductContainer>
         <ImageContainer>
-          <Image src={product.imageUrl} width="520" height={480} alt="" />
+          <Image src={product?.imageUrl} width="520" height={480} alt="" />
         </ImageContainer>
 
         <ProductDetails>
-          <h1>{product.name}</h1>
-          <span>{product.price}</span>
+          <h1>{product?.name}</h1>
+          <span>{product?.price}</span>
 
           <p>{product.description}</p>
 
