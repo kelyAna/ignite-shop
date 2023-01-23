@@ -13,27 +13,26 @@ export const CartHeader = styled('header', {
     float: 'right',
     marginLeft: '200px',
 
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
 
   'button:hover': {
-    color: '$gray100'
-  }
+    color: '$gray100',
+  },
 })
 
-export const CartContent = styled('main', {
-
-})
+export const CartContent = styled('main', {})
 
 export const CartContainer = styled('main', {
   marginTop: '0 auto',
   height: '100vh',
   background: '#202024',
+  overflowY: 'scroll',
 
   flexDirection: 'row-reverse',
   boxShadow: '-4px 0px 30px rgba(0,0,0,0.8)',
 
-  position: 'absolute',
+  position: 'fixed',
 
   width: '30%',
   right: 0,
@@ -45,16 +44,16 @@ export const CartContainer = styled('main', {
     h3: {
       marginBottom: '1rem',
     },
-  
+
     img: {
       background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
       borderRadius: '0.5rem',
-    }
-  }
+    },
+  },
 })
 
 export const CartPrice = styled('div', {
-  marginTop: '12.375rem'
+  marginTop: '10rem',
 })
 
 export const CartItem = styled('div', {
@@ -62,15 +61,15 @@ export const CartItem = styled('div', {
   marginBottom: '1rem',
 
   div: {
-    marginLeft: '1.25rem'
+    marginLeft: '1.25rem',
   },
 
   p: {
-    marginBottom: '0.625rem'
-  },  
+    marginBottom: '0.625rem',
+  },
 
   h4: {
-    marginBottom: '1.875rem'
+    marginBottom: '1.875rem',
   },
 
   button: {
@@ -79,15 +78,16 @@ export const CartItem = styled('div', {
 
     background: 'transparent',
     border: 0,
+    cursor: 'pointer',
 
     fontSize: '1rem',
     fontStyle: 'normal',
-    fontWeight: 700
+    fontWeight: 700,
   },
 
-  'a:hover': {
-    color: '$green300'
-  }
+  'button:hover': {
+    color: '$green300',
+  },
 })
 
 export const CartLine = styled('div', {
@@ -95,8 +95,8 @@ export const CartLine = styled('div', {
   justifyContent: 'space-between',
 
   h3: {
-    marginTop: '0.438rem'
-  }
+    marginTop: '0.438rem',
+  },
 })
 
 export const BuyButton = styled('button', {
@@ -109,6 +109,7 @@ export const BuyButton = styled('button', {
   gap: '0.625rem',
 
   top: '783px',
+  cursor: 'pointer',
 
   marginTop: '3.563rem',
   background: '$green500',
@@ -130,5 +131,5 @@ export const BuyButton = styled('button', {
 
   '&:hover': {
     backgroundColor: '$green300',
-  }
+  },
 })

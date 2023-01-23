@@ -1,24 +1,34 @@
-import Image from "next/image"
-import { useKeenSlider } from "keen-slider/react"
-import Link from "next/link"
-import { GetStaticProps } from "next"
-import Stripe from "stripe"
-import Head from "next/head"
+/* eslint-disable no-redeclare */
+import Stripe from 'stripe'
+import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useKeenSlider } from 'keen-slider/react'
+import { GetStaticProps } from 'next'
+import 'keen-slider/keen-slider.min.css'
 
-import { HomeContainer, Product } from "../styles/pages/home"
-import "keen-slider/keen-slider.min.css"
-import { stripe } from "../lib/stripe"
+import { HomeContainer, Product } from '../styles/pages/home'
+import { stripe } from '../lib/stripe'
 
-import cartIcon from "../assets/cart-icon.svg"
+import cartIcon from '../assets/cart-icon.svg'
+import { useContext } from 'react'
+import toast from 'react-hot-toast'
+import { CartContext } from '../context/CartContext'
+import { ProductProps } from './product/[id]'
 
-interface HomeProps {
+export type HomeProps = {
   products: {
-    id: string
+    id: string | number
     name: string
     imageUrl: string
-    price: string
+    price: number
+    description: string
+    defaultPriceId: string
+    quantity?: number
   }[]
 }
+
+const notifyAddedProduct = () => toast('Produto adicionado')
 
 export default function Home({ products }: HomeProps) {
   const [sliderRef] = useKeenSlider({
@@ -28,6 +38,14 @@ export default function Home({ products }: HomeProps) {
     },
   })
 
+  const { addItemToCart } = useContext(CartContext)
+
+  const addItemToCartClick = (product: ProductProps) => {
+    addItemToCart(product)
+
+    notifyAddedProduct()
+  }
+
   return (
     <>
       <Head>
@@ -35,17 +53,23 @@ export default function Home({ products }: HomeProps) {
       </Head>
       <HomeContainer ref={sliderRef} className="keen-slider">
         {products?.map((product) => {
+          console.log(products)
           return (
-            <Link key={product.id} href={`/product/${product.id}`} prefetch>
+            <Link key={product.id} href={`/product/${product?.id}`} prefetch>
               <Product className="keen-slider__slide">
-                <Image src={product.imageUrl} alt="" width={520} height={480} />
+                <Image
+                  src={product?.imageUrl}
+                  alt=""
+                  width={520}
+                  height={480}
+                />
 
                 <footer>
                   <div>
-                    <strong>{product.name}</strong>
-                    <p>{product.price}</p>
+                    <strong>{product?.name}</strong>
+                    <p>{product?.price}</p>
                   </div>
-                  <button>
+                  <button onClick={() => addItemToCartClick(product)}>
                     <Image src={cartIcon} alt="" width={50} height={50} />
                   </button>
                 </footer>
@@ -60,7 +84,7 @@ export default function Home({ products }: HomeProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
-    expand: ["data.default_price"],
+    expand: ['data.default_price'],
   })
 
   const products = response.data.map((product) => {
@@ -70,9 +94,9 @@ export const getStaticProps: GetStaticProps = async () => {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
-      price: new Intl.NumberFormat("pt-BR", {
-        style: "currency",
-        currency: "BRL",
+      price: new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
       }).format(price.unit_amount / 100),
     }
   })
