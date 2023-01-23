@@ -14,7 +14,6 @@ import cartIcon from '../assets/cart-icon.svg'
 import { useContext } from 'react'
 import toast from 'react-hot-toast'
 import { CartContext } from '../context/CartContext'
-import { ProductProps } from './product/[id]'
 
 export type HomeProps = {
   products: {
@@ -40,7 +39,7 @@ export default function Home({ products }: HomeProps) {
 
   const { addItemToCart } = useContext(CartContext)
 
-  const addItemToCartClick = (product: ProductProps) => {
+  const addItemToCartClick = (product: any) => {
     addItemToCart(product)
 
     notifyAddedProduct()
