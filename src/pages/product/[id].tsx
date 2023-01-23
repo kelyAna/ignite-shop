@@ -15,7 +15,7 @@ import {
 import { ToastComponent } from '../components/Toast'
 
 export type ProductProps = {
-  product: {
+  product?: {
     id: string | number
     name: string
     imageUrl: string
