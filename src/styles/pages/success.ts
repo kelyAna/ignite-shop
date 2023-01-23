@@ -11,6 +11,8 @@ import { styled } from "..";
    h1: {
      fontSize: '$2xl',
      color: '$gray100',
+
+     marginTop: '10rem',
    },
 
    p: {
@@ -33,24 +35,26 @@ import { styled } from "..";
      '&:hover': {
        color: '$green300',
      }
-   }
- });
+   },
 
- export const ImageContainer = styled('div', {
-   width: '100%',
-   maxWidth: 130,
-   height: 145,
-   background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
-   borderRadius: 8,
-   padding: '0.25rem',
-   marginTop: '4rem',
+   div: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '0px',
 
-   display: 'flex',
-   alignItems: 'center',
-   justifyContent: 'center',
+    position: 'absolute',
+    width: '316px',
+    height: '140px',
+    left: 'calc(50% - 316px/2)',
+    top: '220px',
 
+    img: {
+      background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
+      borderRadius: '1000px',
 
-   img: {
-     objectFit: 'cover',
+      marginLeft: '-70px'
+    }
    }
  });

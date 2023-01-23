@@ -32,16 +32,16 @@ export const Header = styled('header', {
     flexDirection: 'column',
 
     marginLeft: '1.875rem',
-    marginTop: '-10px' ,
+    marginTop: '-10px',
 
     border: '1px solid #121214',
-    
+
     position: 'absolute',
   },
 
   button: {
     cursor: 'pointer',
     border: 0,
-    background: 'transparent'
-  }
+    background: 'transparent',
+  },
 })

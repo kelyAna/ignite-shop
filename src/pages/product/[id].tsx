@@ -1,57 +1,40 @@
-import axios from "axios";
-import { GetStaticPaths, GetStaticProps } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import { useContext, useState } from "react";
-import Stripe from "stripe";
-import { CartContext } from "../../context/CartContext";
+import { GetStaticPaths, GetStaticProps } from 'next'
+import Head from 'next/head'
+import Image from 'next/image'
+import { useContext } from 'react'
+import toast from 'react-hot-toast'
+import Stripe from 'stripe'
 
-import { stripe } from "../../lib/stripe";
+import { CartContext } from '../../context/CartContext'
+import { stripe } from '../../lib/stripe'
 import {
   ImageContainer,
   ProductContainer,
   ProductDetails,
-} from "../../styles/pages/product";
+} from '../../styles/pages/product'
+import { ToastComponent } from '../components/Toast'
 
 export type ProductProps = {
   product: {
-    id: string | number;
-    name: string;
-    imageUrl: string;
-    price: number;
-    description: string;
-    defaultPriceId: string;
-    quantity?: number;
-  };
-};
+    id: string | number
+    name: string
+    imageUrl: string
+    price: number
+    description: string
+    defaultPriceId: string
+    quantity?: number
+  }
+}
+
+const notifyProductAddedToCart = () => toast('Produto adicionado')
 
 export default function Product({ product }: ProductProps) {
-  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
-    useState(false);
-
-  const { addItemToCart, removeItemFromCart, cart, cartLength } = useContext(CartContext);
-  const [cartItens, setCartItens] = useState([])
-
-  async function handleBuyButton() {
-    try {
-      setIsCreatingCheckoutSession(true);
-
-      const response = await axios.post("/api/checkout", {
-        priceId: product.defaultPriceId,
-      });
-
-      const { checkoutUrl } = response.data;
-
-      window.location.href = checkoutUrl;
-    } catch (err) {
-      setIsCreatingCheckoutSession(false);
-
-      alert("Falha ao redirecionar ao checkout!");
-    }
-  }
+  const { addItemToCart } = useContext(CartContext)
 
   const addItemToCartClick = () => {
     addItemToCart({ product })
+
+    notifyProductAddedToCart()
   }
 
   return (
@@ -71,39 +54,35 @@ export default function Product({ product }: ProductProps) {
 
           <p>{product.description}</p>
 
-          <button
-            disabled={isCreatingCheckoutSession}
-            onClick={addItemToCartClick}
-          >
-            Colocar na sacola
-          </button>
+          <button onClick={addItemToCartClick}>Colocar na sacola</button>
+          <ToastComponent />
         </ProductDetails>
       </ProductContainer>
     </>
-  );
+  )
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [
       {
-        params: { id: "prod_MIwMNZU8sIbVfI" },
+        params: { id: 'prod_MIwMNZU8sIbVfI' },
       },
     ],
     fallback: true,
-  };
-};
+  }
+}
 
 export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
   params,
 }) => {
-  const productId = params.id;
+  const productId = params.id
 
   const product = await stripe.products.retrieve(productId, {
-    expand: ["default_price"],
-  });
+    expand: ['default_price'],
+  })
 
-  const price = product.default_price as Stripe.Price;
+  const price = product.default_price as Stripe.Price
 
   return {
     props: {
@@ -111,13 +90,13 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
         id: product.id,
         name: product.name,
         imageUrl: product.images[0],
-        price: new Intl.NumberFormat("pt-BR", {
-          style: "currency",
-          currency: "BRL",
+        price: new Intl.NumberFormat('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
         }).format(price.unit_amount / 100),
         description: product.description,
         defaultPriceId: price.id,
       },
     },
-  };
-};
+  }
+}

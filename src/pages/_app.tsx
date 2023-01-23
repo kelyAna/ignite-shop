@@ -1,18 +1,18 @@
-import { AppProps } from "next/app";
-import { globalStyles } from "../styles/global";
-import { CloseButton } from "@chakra-ui/react";
-import { Container, Header } from "../styles/pages/app";
+import { useState } from 'react'
+import { AppProps } from 'next/app'
+import { globalStyles } from '../styles/global'
+import { CloseButton } from '@chakra-ui/react'
+import { Container, Header } from '../styles/pages/app'
 
-import Image from "next/image";
-import Cart from "./cart";
+import Image from 'next/image'
+import Cart from './cart'
 
-import logoImg from "../assets/logo-ignite.svg";
-import { useState } from "react";
-import { CartContainer, CartHeader } from "../styles/pages/cart";
-import { CartContextProvider } from "../context/CartContext";
-import { CartButton } from "./components/CartButton";
+import { CartContainer, CartHeader } from '../styles/pages/cart'
+import { CartContextProvider } from '../context/CartContext'
+import { CartButton } from './components/CartButton'
+import logoImg from '../assets/logo-ignite.svg'
 
-globalStyles();
+globalStyles()
 
 export default function App({ Component, pageProps }: AppProps) {
   const [showModal, setShowModal] = useState(false)
@@ -40,5 +40,5 @@ export default function App({ Component, pageProps }: AppProps) {
         )}
       </Container>
     </CartContextProvider>
-  );
+  )
 }

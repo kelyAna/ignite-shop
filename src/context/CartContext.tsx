@@ -7,7 +7,7 @@ interface CartContextProps {
   cart: ProductProps[]
   cartLength: number
   addItemToCart: (item: ProductProps) => void
-  removeItemFromCart: (itemId: string) => void
+  removeItemFromCart: (itemId: string | number) => void
 }
 
 export const CartContext = createContext({} as CartContextProps)

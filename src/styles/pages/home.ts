@@ -1,10 +1,10 @@
-import { styled } from "..";
+import { styled } from '..'
 
 export const HomeContainer = styled('main', {
-   display: 'flex',
-   padding: '2rem 10rem 2rem 10rem',
-   marginLeft: 'auto',
-   minHeight: 656
+  display: 'flex',
+  padding: '2rem 10rem 2rem 10rem',
+  marginLeft: 'auto',
+  minHeight: 656,
 })
 
 export const Product = styled('div', {
@@ -63,14 +63,14 @@ export const Product = styled('div', {
     button: {
       background: 'transparent',
       border: 0,
-      cursor: 'pointer'
-    }
+      cursor: 'pointer',
+    },
   },
 
   '&:hover': {
     footer: {
       transform: 'translateY(0%)',
-      opacity: 1
-    }
-  }
+      opacity: 1,
+    },
+  },
 })
