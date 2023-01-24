@@ -33,14 +33,16 @@ export default function Cart() {
   }
 
   arrCart.map((price) => {
-    return itensPrice.push(price.product.price)
+    return itensPrice.push(price.product?.price)
   })
 
-  itensPrice.map((price) => {
-    cartTotalPrice.push(parseFloat(price.substring(3)))
+  if (itensPrice) {
+    itensPrice.map((price) => {
+      cartTotalPrice.push(parseFloat(price?.substring(3)))
 
-    return (totalPrice = sum(cartTotalPrice))
-  })
+      return (totalPrice = sum(cartTotalPrice))
+    })
+  }
 
   const handleBuyButton = async () => {
     try {

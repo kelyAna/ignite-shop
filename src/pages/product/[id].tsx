@@ -52,7 +52,7 @@ export default function Product({ product }: ProductProps) {
           <h1>{product?.name}</h1>
           <span>{product?.price}</span>
 
-          <p>{product.description}</p>
+          <p>{product?.description}</p>
 
           <button onClick={addItemToCartClick}>Colocar na sacola</button>
           <ToastComponent />
