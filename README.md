@@ -5,6 +5,11 @@
 <img width="493" alt="Captura de Tela 2023-01-24 às 00 08 17" src="https://user-images.githubusercontent.com/48291057/214204649-1b04172a-1002-48f0-8f17-0e286e3f82e2.png">
 
 ## Checkout screen
+### cart to test mode
+```
+- 4242 4242 4242 4242 (number)
+- 12/34 CVC: 123
+```
 <img width="510" alt="Captura de Tela 2023-01-24 às 00 07 35" src="https://user-images.githubusercontent.com/48291057/214204673-6a76d383-e023-4fae-875a-b1c1207a4c2d.png">
 
 ## Success screen
