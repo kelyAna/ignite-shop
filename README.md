@@ -1,13 +1,13 @@
 # Ignite Shop
 
-Cart screen
+## Cart screen
 <img width="503" alt="Captura de Tela 2023-01-24 às 00 07 51" src="https://user-images.githubusercontent.com/48291057/214204640-223682cd-c87e-426c-9a9b-9fb61cb44b2a.png">
 <img width="493" alt="Captura de Tela 2023-01-24 às 00 08 17" src="https://user-images.githubusercontent.com/48291057/214204649-1b04172a-1002-48f0-8f17-0e286e3f82e2.png">
 
-Checkout screen
+## Checkout screen
 <img width="510" alt="Captura de Tela 2023-01-24 às 00 07 35" src="https://user-images.githubusercontent.com/48291057/214204673-6a76d383-e023-4fae-875a-b1c1207a4c2d.png">
 
-Success screen
+## Success screen
 <img width="510" alt="Captura de Tela 2023-01-24 às 00 07 24" src="https://user-images.githubusercontent.com/48291057/214204678-f6443302-9ec2-4099-bc34-9cdab3fa1203.png">
 
 ## About the project 💻
